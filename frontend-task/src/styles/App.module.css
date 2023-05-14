@@ -1,0 +1,13 @@
+.centerText {
+    text-align: center;
+    color: #1b31a8;
+    font-family: "Work Sans";
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 700px) {
+    .centerText {
+        font-size: 16px;
+    }
+}

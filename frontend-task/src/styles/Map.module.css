@@ -1,0 +1,156 @@
+.mainFlex {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 100px;
+}
+
+.smallTitle {
+    font-family: "IBM Plex Sans";
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.locationInput {
+    background: #ffffff;
+    border: 1px solid #dcddec;
+    border-radius: 6px;
+    height: 35px;
+    width: 200px;
+    font-size: 16px;
+    font-family: "IBM Plex Sans";
+    padding-left: 10px;
+}
+
+.stopLocation {
+    width: 200px;
+    font-size: 14px;
+    font-family: "IBM Plex Sans";
+    padding: 1px 2px;
+    padding-left: 10px;
+    color: #444;
+}
+
+.stopLocation:nth-last-child(2) {
+    margin-bottom: 5px;
+}
+
+.calculateButton {
+    width: 120px;
+    height: 43px;
+    background-color: #1b31a8;
+    border-radius: 32px;
+    color: white;
+    font-size: 17px;
+    font-family: "IBM Plex Sans";
+}
+
+.calculateButton:hover {
+    background-color: #142589;
+}
+
+.stopButton {
+    font-family: "Rubik";
+    font-size: 15px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttonFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inputBlock {
+    margin: 30px;
+}
+
+.outputBlock {
+    width: 100%;
+    border: 1px solid #e9eef2;
+    border-radius: 8px;
+}
+
+.distanceBlock1 {
+    background-color: white;
+    height: 50px;
+    border-radius: 8px 8px 0 0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30%;
+}
+
+.distanceBlock2 {
+    padding: 5px;
+    min-height: 50px;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Work Sans";
+    line-height: 50px;
+}
+
+.distanceTitle {
+    font-family: "IBM Plex Sans";
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.distance {
+    font-size: 25px;
+    color: #0079ff;
+    font-weight: 600;
+}
+
+.map {
+    width: 40vw;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 1200px) {
+    .mainFlex {
+        flex-direction: column-reverse;
+        margin: 50px 0;
+        overflow: hidden;
+    }
+
+    .buttonFlex {
+        flex-direction: column;
+    }
+
+    .map {
+        width: 70vw;
+        margin: 0 auto;
+    }
+
+    .inputsBlock {
+        width: 70%;
+    }
+
+    .locationInput {
+        width: 100%;
+    }
+
+    .outputBlock {
+        width: 70%;
+        margin: 20px auto;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .map {
+        width: 100vw;
+    }
+
+    .inputsBlock {
+        width: 90%;
+    }
+
+    .distanceBlock2 {
+        line-height: 20px;
+    }
+}
