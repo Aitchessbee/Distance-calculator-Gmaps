@@ -68,7 +68,7 @@ function Map() {
             libraries={["places"]}
         >
             <div className={Styles.mainFlex}>
-                <div>
+                <div className={Styles.leftSide}>
                     <div className={Styles.buttonFlex}>
                         <div className={Styles.inputsBlock}>
                             <div className={Styles.inputBlock}>
