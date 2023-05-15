@@ -10,15 +10,29 @@
     margin-bottom: 5px;
 }
 
-.locationInput {
+.locationInputDiv {
     background: #ffffff;
     border: 1px solid #dcddec;
     border-radius: 6px;
     height: 35px;
-    width: 200px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-left: 10px;
+}
+
+.locationInput {
+    /* background: #ffffff;
+    border: 1px solid #dcddec;
+    border-radius: 6px;
+    height: 35px;
+    width: 200px; */
     font-size: 16px;
     font-family: "IBM Plex Sans";
     padding-left: 10px;
+    border: none;
+    outline: none;
 }
 
 .stopLocation {
@@ -55,12 +69,15 @@
     background-color: transparent;
     cursor: pointer;
     text-align: center;
+    margin: 5px 0 0 auto;
+    display: flex;
+    gap: 5px;
 }
 
 .buttonFlex {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 30px;
 }
 
 .inputBlock {
@@ -91,7 +108,9 @@
     text-align: center;
     font-size: 16px;
     font-family: "Work Sans";
-    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .distanceTitle {
@@ -104,11 +123,13 @@
     font-size: 25px;
     color: #0079ff;
     font-weight: 600;
+    font-family: "IBM Plex Sans";
 }
 
 .map {
     width: 40vw;
     height: 100%;
+    box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
 }
 
 @media only screen and (max-width: 1200px) {
@@ -120,6 +141,7 @@
 
     .buttonFlex {
         flex-direction: column;
+        gap: 0px;
     }
 
     .map {
@@ -129,6 +151,10 @@
 
     .inputsBlock {
         width: 70%;
+    }
+
+    .locationInputDiv {
+        width: 100%;
     }
 
     .locationInput {

@@ -8,6 +8,10 @@ import {
 } from "@react-google-maps/api";
 
 import Styles from "../styles/Map.module.css";
+import originImg from "../images/origin.png";
+import stopImg from "../images/stop.png";
+import destinationImg from "../images/destination.png";
+import addStopImg from "../images/addstop.png";
 
 /* global google */
 
@@ -46,9 +50,15 @@ function Map() {
             travelMode: google.maps.TravelMode.DRIVING,
         });
         setDirectionsResponse(results);
-        setDistance(results.routes[0].legs[0].distance.text);
+        let sumDistances = 0;
+
+        for (let leg in results.routes[0].legs) {
+            sumDistances += parseFloat(
+                results.routes[0].legs[leg].distance.text.split(" ")[0].replaceAll(",", "")
+            );
+        }
+        setDistance(sumDistances);
         setShowDistance(true);
-        // setDuration(results.routes[0].legs[0].duration.text);
     };
 
     const addStop = () => {
@@ -74,47 +84,57 @@ function Map() {
                             <div className={Styles.inputBlock}>
                                 <div className={Styles.smallTitle}>Origin</div>
                                 <Autocomplete>
-                                    <input
-                                        type="text"
-                                        placeholder="Origin"
-                                        ref={originRef}
-                                        className={Styles.locationInput}
-                                    />
+                                    <div className={Styles.locationInputDiv}>
+                                        <img src={originImg} alt="" />
+                                        <input
+                                            type="text"
+                                            placeholder="Origin"
+                                            ref={originRef}
+                                            className={Styles.locationInput}
+                                        />
+                                    </div>
                                 </Autocomplete>
                             </div>
                             <div className={Styles.inputBlock}>
                                 <div className={Styles.smallTitle}>Stop</div>
-                                <Autocomplete>
-                                    <>
-                                        {stops.map((stop, index) => {
-                                            console.log(stop);
-                                            return (
-                                                <li className={Styles.stopLocation} key={index}>
-                                                    {stop.location}
-                                                </li>
-                                            );
-                                        })}
-                                        <input
-                                            type="text"
-                                            placeholder="Enter a Stop"
-                                            ref={stopRef}
-                                            className={Styles.locationInput}
-                                        />
-                                    </>
-                                </Autocomplete>
+                                <>
+                                    {stops.map((stop, index) => {
+                                        console.log(stop);
+                                        return (
+                                            <li className={Styles.stopLocation} key={index}>
+                                                {stop.location}
+                                            </li>
+                                        );
+                                    })}
+                                    <Autocomplete>
+                                        <div className={Styles.locationInputDiv}>
+                                            <img src={stopImg} alt="" />
+                                            <input
+                                                type="text"
+                                                placeholder="Enter a Stop"
+                                                ref={stopRef}
+                                                className={Styles.locationInput}
+                                            />
+                                        </div>
+                                    </Autocomplete>
+                                </>
                                 <button onClick={addStop} className={Styles.stopButton}>
-                                    + Add another stop
+                                    <img src={addStopImg} alt="" />
+                                    <div>Add another stop</div>
                                 </button>
                             </div>
                             <div className={Styles.inputBlock}>
                                 <div className={Styles.smallTitle}>Destination</div>
                                 <Autocomplete>
-                                    <input
-                                        type="text"
-                                        placeholder="Destinaton"
-                                        ref={destinationRef}
-                                        className={Styles.locationInput}
-                                    />
+                                    <div className={Styles.locationInputDiv}>
+                                        <img src={destinationImg} alt="" />
+                                        <input
+                                            type="text"
+                                            placeholder="Destinaton"
+                                            ref={destinationRef}
+                                            className={Styles.locationInput}
+                                        />
+                                    </div>
                                 </Autocomplete>
                             </div>
                         </div>
@@ -129,12 +149,14 @@ function Map() {
                         <div className={Styles.outputBlock}>
                             <div className={Styles.distanceBlock1}>
                                 <div className={Styles.distanceTitle}>Distance</div>
-                                <div className={Styles.distance}>{distance}</div>
+                                <div className={Styles.distance}>{distance} kms</div>
                             </div>
                             <div className={Styles.distanceBlock2}>
-                                The distance between <b>{originRef.current.value}</b> and{" "}
-                                <b>{destinationRef.current.value}</b> via the seleted route is{" "}
-                                <b>{distance}</b>.
+                                <div>
+                                    The distance between <b>{originRef.current.value}</b> and{" "}
+                                    <b>{destinationRef.current.value}</b> via the seleted route is{" "}
+                                    <b>{distance} kms</b>.
+                                </div>
                             </div>
                         </div>
                     )}
