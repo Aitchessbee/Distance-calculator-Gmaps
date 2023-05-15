@@ -1,5 +1,4 @@
 import Map from "./components/Map";
-import LeftAside from "./components/LeftAside";
 import Navbar from "./components/Navbar";
 import Styles from "./styles/App.module.css";
 
